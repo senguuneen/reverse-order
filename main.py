@@ -1,21 +1,14 @@
-import math
-
 def count_digits(number):
-    if number == 0:
-        return 1
-    elif number < 0:
-        number = abs(number)
-    return int(math.log10(number)) + 1
+    count = 0
+    while number > 0:
+        number = number // 10
+        count += 1
+    return count
 
-def main():
-    user_input = input("Enter a number: ")
-    
-    try:
-        number = float(user_input)
-        digits = count_digits(abs(number)) if not isinstance(number, bool) else 1
-        print(f"✨ Total digits in the number: {digits} ✨")
-    except ValueError:
-        print("⚠️ Invalid input! Please enter a valid number. ⚠️")
+user_input = int(input("Enter a number: "))
 
-if __name__ == "__main__":
-    main()
+if user_input == 0:
+    print("The total number of digits is 1.")
+else:
+    total_digits = count_digits(user_input)
+    print(f"The total number of digits is: {total_digits}")
